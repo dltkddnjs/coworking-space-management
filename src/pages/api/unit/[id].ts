@@ -1,0 +1,20 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default function getUnitDataByBranchId(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const {
+    query: { id },
+  } = req;
+
+  const unitDatas = require('../unit.json');
+
+  const pathId = Number(id);
+
+  const filteredUnitData = unitDatas.filter(
+    (data: UnitDataType) => data.branchId === pathId,
+  );
+
+  res.status(200).json(filteredUnitData);
+}
