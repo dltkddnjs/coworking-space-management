@@ -1,9 +1,22 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
+import { GetStaticProps } from 'next';
+import axios from 'axios';
+import Branch from './branch';
 
-const inter = Inter({ subsets: ['latin'] });
+export const getStaticProps: GetStaticProps<BranchProps> = async () => {
+  const branchDatas = (await axios.get('http://localhost:3000/api/branch'))
+    .data;
 
-export default function Home() {
-  return <></>;
+  return {
+    props: {
+      branchDatas: branchDatas,
+    },
+  };
+};
+
+export default function Home({ branchDatas }: BranchProps) {
+  return (
+    <>
+      <Branch branchDatas={branchDatas} />
+    </>
+  );
 }

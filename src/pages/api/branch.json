@@ -757,7 +757,7 @@
   },
   {
     "id": 85,
-    "branchName": "창고명 30322046 지점",
+    "branchName": "수원점",
     "isAvailable": 1,
     "isExamined": 0,
     "numberOfUnits": 2,
@@ -766,7 +766,7 @@
   },
   {
     "id": 86,
-    "branchName": "창고명 88272167 지점",
+    "branchName": "인천점",
     "isAvailable": 0,
     "isExamined": 1,
     "numberOfUnits": 4,
@@ -775,7 +775,7 @@
   },
   {
     "id": 87,
-    "branchName": "창고명 28195101 지점",
+    "branchName": "부천점",
     "isAvailable": 0,
     "isExamined": 1,
     "numberOfUnits": 3,
@@ -784,7 +784,7 @@
   },
   {
     "id": 88,
-    "branchName": "이문 1호점",
+    "branchName": "안양점",
     "isAvailable": 1,
     "isExamined": 1,
     "numberOfUnits": 5,

@@ -5,7 +5,7 @@ const CustomStatistics = ({ data }: CustomStatisticsProps) => {
     <Card>
       <Row gutter={24}>
         {data.map((item: StatisticsDatasType) => (
-          <Col span={4} key={item.id}>
+          <Col span={4} key={item.id} style={{ minWidth: 'fit-content' }}>
             <Statistic
               title={
                 item.title ? (

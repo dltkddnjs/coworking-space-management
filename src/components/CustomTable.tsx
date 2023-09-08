@@ -1,13 +1,7 @@
 import { Card, Pagination, Table } from 'antd';
 import { useRef, useState } from 'react';
-import CustomButton from './CustomButton';
 
-const CustomTable = ({
-  columns,
-  data,
-  pagination,
-  buttonTitle,
-}: CustomTableProps) => {
+const CustomTable = ({ columns, data, pagination }: CustomTableProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
 
@@ -36,9 +30,7 @@ const CustomTable = ({
           justifyContent: 'flex-end',
           marginBottom: '20px',
         }}
-      >
-        <CustomButton buttonTitle={buttonTitle} />
-      </div>
+      ></div>
       <Table
         columns={columns}
         dataSource={currentDataSource}

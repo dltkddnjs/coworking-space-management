@@ -1,3 +1,7 @@
+// 함수 매개변수 타입
+type CountBranchStateInputTextType = 'isExamined' | 'isAvailable';
+
+// 컴포넌트 타입
 interface CustomButtonProps {
   buttonTitle: string;
 }
@@ -19,7 +23,6 @@ interface CustomTableProps {
   columns: Array<T>;
   data: Array<F>;
   pagination: boolean;
-  buttonTitle: string;
 }
 
 interface CustomTitleProps {
@@ -33,6 +36,7 @@ interface StatisticsDatasType {
   value: number | string;
 }
 
+// API 데이터 타입
 interface BranchDataType {
   key: React.Key;
   id: number;
@@ -68,4 +72,16 @@ interface UnitITemDataType {
   endDate: Date;
   createdAt: Date;
   updatedAt: Date;
+}
+
+//페이지 타입
+interface BranchProps {
+  branchDatas: BranchDataType[];
+}
+
+interface UnitProps {
+  id: string;
+  branchDatas: BranchDataType[];
+  unitIdDatas: UnitDataType[];
+  filteredUnitItemDatas: UnitITemDataType[];
 }
