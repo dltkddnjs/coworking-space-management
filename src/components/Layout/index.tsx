@@ -5,7 +5,7 @@ import { usePagination } from 'context/PaginationProvider';
 
 import { useRouter } from 'next/router';
 
-const { Header, Sider } = Layout;
+const { Header, Sider, Content } = Layout;
 
 const headerItem: MenuProps['items'] = [
   {
@@ -35,12 +35,15 @@ const PageLayout: React.FC<AppProps> = ({ children }) => {
         <Menu theme="dark" mode="horizontal" items={headerItem} />
       </Header>
       <Layout
+        hasSider={true}
         style={{
           width: '100%',
           height: `calc(100 % - 60px)`,
+          display: 'flex',
         }}
       >
         <Sider
+          width={250}
           style={{
             background: 'white',
           }}
@@ -59,7 +62,7 @@ const PageLayout: React.FC<AppProps> = ({ children }) => {
             ]}
           />
         </Sider>
-        <Layout
+        <Content
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -71,7 +74,7 @@ const PageLayout: React.FC<AppProps> = ({ children }) => {
           }}
         >
           {children}
-        </Layout>
+        </Content>
       </Layout>
     </Layout>
   );
