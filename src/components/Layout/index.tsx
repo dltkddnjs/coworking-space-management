@@ -1,6 +1,7 @@
-import { Affix, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 
 import type { AppProps, MenuProps } from 'antd';
+import { usePagination } from 'context/PaginationProvider';
 
 import { useRouter } from 'next/router';
 
@@ -18,6 +19,7 @@ const sideMenuItems: MenuProps['items'] = [
 ];
 
 const PageLayout: React.FC<AppProps> = ({ children }) => {
+  const { changeCurrentPage } = usePagination();
   const router = useRouter();
 
   return (
@@ -27,8 +29,6 @@ const PageLayout: React.FC<AppProps> = ({ children }) => {
         height: '100%',
         minWidth: '1200px',
         minHeight: '800px',
-        maxHeight: 'auto',
-        // background: 'blue',
       }}
     >
       <Header style={{ height: '60px' }}>
@@ -38,20 +38,20 @@ const PageLayout: React.FC<AppProps> = ({ children }) => {
         style={{
           width: '100%',
           height: `calc(100 % - 60px)`,
-          // background: 'red',
         }}
       >
         <Sider
           style={{
             background: 'white',
-            // height: '100%',
-            // minHeight: '100%',
           }}
         >
           <Menu
             items={sideMenuItems}
             style={{ padding: '15px' }}
-            onClick={({ key }) => router.push(key)}
+            onClick={({ key }) => {
+              router.push(key);
+              changeCurrentPage(1);
+            }}
             selectedKeys={[
               router.asPath === '/' || router.asPath === '/branch'
                 ? '/branch'

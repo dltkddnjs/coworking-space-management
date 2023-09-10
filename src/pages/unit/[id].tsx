@@ -37,6 +37,7 @@ export const getStaticProps = async (
       unitIdDatas,
       filteredUnitItemDatas,
     },
+    // revalidate: 1,
   };
 };
 

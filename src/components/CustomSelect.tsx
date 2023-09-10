@@ -1,10 +1,12 @@
 import { Descriptions, Select, Space, Typography } from 'antd';
+import { usePagination } from 'context/PaginationProvider';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 const { Title } = Typography;
 
 const CustomSelect = ({ data, id }: CustomSelectProps) => {
+  const { currentPage, changeCurrentPage } = usePagination();
   const [, setCurrentPage] = useState<number>(1);
   const router = useRouter();
 
@@ -29,7 +31,7 @@ const CustomSelect = ({ data, id }: CustomSelectProps) => {
           size="large"
           onSelect={(option) => {
             router.push(`/unit/${option}`);
-            setCurrentPage(1);
+            changeCurrentPage(1);
           }}
         />
       </Descriptions.Item>

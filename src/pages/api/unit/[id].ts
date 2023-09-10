@@ -10,10 +10,8 @@ export default function getUnitDataByBranchId(
 
   const unitDatas = require('../unit.json');
 
-  const pathId = Number(id);
-
   const filteredUnitData = unitDatas.filter(
-    (data: UnitDataType) => data.branchId === pathId,
+    (data: UnitDataType) => data.branchId === Number(id),
   );
 
   res.status(200).json(filteredUnitData);

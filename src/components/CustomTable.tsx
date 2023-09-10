@@ -1,14 +1,17 @@
 import { Card, Pagination, Table } from 'antd';
+import { usePagination } from 'context/PaginationProvider';
 import { useRef, useState } from 'react';
 
 const CustomTable = ({ columns, data, pagination }: CustomTableProps) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const { currentPage, changeCurrentPage } = usePagination();
   const [pageSize, setPageSize] = useState<number>(10);
 
   const currentDataSource = data.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize,
   ); // props로 받아온 데이터들을 현재 페이지에 보여질 pageSize만큼 나누어준다
+
+  const noPaginationDataSource = data.slice(0, 10);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +36,7 @@ const CustomTable = ({ columns, data, pagination }: CustomTableProps) => {
       ></div>
       <Table
         columns={columns}
-        dataSource={currentDataSource}
+        dataSource={pagination ? currentDataSource : noPaginationDataSource}
         pagination={false}
         bordered
         rowKey={(data) => data.id}
@@ -51,7 +54,7 @@ const CustomTable = ({ columns, data, pagination }: CustomTableProps) => {
           pageSize={pageSize}
           pageSizeOptions={[10, 20, 50, 100]}
           onChange={(page, pageSize) => {
-            setCurrentPage(page);
+            changeCurrentPage(page);
             setPageSize(pageSize);
             setScrollAboveTheTable();
           }}
