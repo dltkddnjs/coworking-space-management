@@ -1,8 +1,8 @@
 import { GetStaticPropsContext, PreviewData } from 'next';
 import { Badge } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import axios from 'axios';
 import { ParsedUrlQuery } from 'querystring';
+import axios from 'axios';
 
 import PageLayout from 'components/Layout';
 import CustomHead from 'components/CustomHead';
@@ -37,7 +37,6 @@ export const getStaticProps = async (
       unitIdDatas,
       filteredUnitItemDatas,
     },
-    // revalidate: 1,
   };
 };
 
@@ -49,7 +48,7 @@ export const getStaticPaths = async () => {
     return { params: { id: data.id.toString() } };
   });
 
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: false };
 };
 
 const unitItemTableColumns: ColumnsType<UnitITemDataType> = [
