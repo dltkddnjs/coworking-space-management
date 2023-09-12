@@ -10,6 +10,7 @@ import CustomTitle from 'components/CustomTitle';
 import CustomSelect from 'components/CustomSelect';
 import CustomStatistics from 'components/CustomStatistics';
 import CustomTable from 'components/CustomTable';
+import { useRouter } from 'next/router';
 
 export const getStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>,
@@ -32,7 +33,6 @@ export const getStaticProps = async (
 
   return {
     props: {
-      id,
       branchDatas,
       unitIdDatas,
       filteredUnitItemDatas,
@@ -44,9 +44,9 @@ export const getStaticPaths = async () => {
   const branchDatas = (await axios.get('http://localhost:3000/api/branch'))
     .data;
 
-  const paths = branchDatas.map((data: BranchDataType) => {
-    return { params: { id: data.id.toString() } };
-  });
+  const paths = branchDatas.map((data: BranchDataType) => ({
+    params: { id: data.id.toString() },
+  }));
 
   return { paths, fallback: false };
 };
@@ -135,11 +135,13 @@ const unitItemTableColumns: ColumnsType<UnitITemDataType> = [
 ];
 
 const Unit = ({
-  id,
   branchDatas,
   unitIdDatas,
   filteredUnitItemDatas,
 }: UnitProps) => {
+  const router = useRouter();
+  const id = router.query.id as string;
+
   const sumNumberOfUnitItems = (unitIdData: UnitDataType[]) => {
     return unitIdData.reduce((acc, curr) => acc + curr.numberOfUnitItems, 0);
   }; // 총 유닛 개수

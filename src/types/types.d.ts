@@ -80,7 +80,6 @@ interface BranchProps {
 }
 
 interface UnitProps {
-  id: string;
   branchDatas: BranchDataType[];
   unitIdDatas: UnitDataType[];
   filteredUnitItemDatas: UnitITemDataType[];
