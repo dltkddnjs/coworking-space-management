@@ -16,12 +16,19 @@ export const getStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>,
 ) => {
   const id = context.params!.id as string;
-  const branchDatas = (await axios.get('http://127.0.0.1:3000/api/branch'))
-    .data;
-  const unitItemDatas = (await axios.get('http://127.0.0.1:3000/api/unit-item'))
-    .data;
-  const unitIdDatas = (await axios.get(`http://127.0.0.1:3000/api/unit/${id}`))
-    .data;
+  const branchDatas = (
+    await axios.get('https://coworking-space-management.vercel.app/api/branch')
+  ).data;
+  const unitItemDatas = (
+    await axios.get(
+      'https://coworking-space-management.vercel.app/api/unit-item',
+    )
+  ).data;
+  const unitIdDatas = (
+    await axios.get(
+      `https://coworking-space-management.vercel.app/api/unit/${id}`,
+    )
+  ).data;
 
   const filteredUnitItemDatas = unitItemDatas.filter(
     (itemB: UnitITemDataType) => {
@@ -41,8 +48,9 @@ export const getStaticProps = async (
 };
 
 export const getStaticPaths = async () => {
-  const branchDatas = (await axios.get('http://localhost:3000/api/branch'))
-    .data;
+  const branchDatas = (
+    await axios.get('https://coworking-space-management.vercel.app/api/branch')
+  ).data;
 
   const paths = branchDatas.map((data: BranchDataType) => ({
     params: { id: data.id.toString() },
