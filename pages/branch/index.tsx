@@ -11,9 +11,8 @@ import CustomStatistics from 'components/CustomStatistics';
 import CustomTable from 'components/CustomTable';
 
 export const getStaticProps: GetStaticProps<BranchProps> = async () => {
-  const branchDatas = (
-    await axios.get('https://coworking-space-management.vercel.app/api/branch')
-  ).data;
+  const branchDatas = (await axios.get('http://127.0.0.1:3000/api/branch'))
+    .data;
 
   return {
     props: {
