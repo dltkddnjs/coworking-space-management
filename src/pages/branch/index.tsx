@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps<BranchProps> = async () => {
 
   return {
     props: {
-      branchDatas: branchDatas,
+      branchDatas,
     },
   };
 };
