@@ -16,11 +16,11 @@ export const getStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>,
 ) => {
   const id = context.params!.id as string;
-  const branchDatas = (await axios.get('http://localhost:3000/api/branch'))
+  const branchDatas = (await axios.get('http://127.0.0.1:3000/api/branch'))
     .data;
-  const unitItemDatas = (await axios.get('http://localhost:3000/api/unit-item'))
+  const unitItemDatas = (await axios.get('http://127.0.0.1:3000/api/unit-item'))
     .data;
-  const unitIdDatas = (await axios.get(`http://localhost:3000/api/unit/${id}`))
+  const unitIdDatas = (await axios.get(`http://127.0.0.1:3000/api/unit/${id}`))
     .data;
 
   const filteredUnitItemDatas = unitItemDatas.filter(

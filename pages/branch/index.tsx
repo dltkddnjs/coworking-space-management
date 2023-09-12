@@ -11,7 +11,7 @@ import CustomStatistics from 'components/CustomStatistics';
 import CustomTable from 'components/CustomTable';
 
 export const getStaticProps: GetStaticProps<BranchProps> = async () => {
-  const branchDatas = (await axios.get('http://localhost:3000/api/branch'))
+  const branchDatas = (await axios.get('http://127.0.0.1:3000/api/branch'))
     .data;
 
   return {
